@@ -23,7 +23,10 @@ public class HomeController : Controller
             var Name=User.Identity.Name;
             ViewBag.username=Name.ToString();
         }
-        return View();
+        Lists lists=new Lists();
+        lists.Users=_context.user_list.ToList();
+        lists.Products=_context.product_list.ToList();
+        return View(lists);
     }
     [HttpGet]
     public IActionResult Login()
@@ -74,4 +77,22 @@ public class HomeController : Controller
         await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
         return RedirectToAction("Index");
     }
+    [HttpGet]
+    public IActionResult Products(){
+
+        return View();
+    }
+    [HttpPost]
+    public IActionResult Products(Product product){
+        Console.Write("Hello");
+        var product1=_context.user_list.ToList().FirstOrDefault(p=>p.name==User.Identity.Name);
+        if(product1!=null){
+            product.OwnerId=product1.UserId;
+        }
+
+        _context.CreateProduct(product);
+
+        return RedirectToAction("Index");
+    }
+
 }

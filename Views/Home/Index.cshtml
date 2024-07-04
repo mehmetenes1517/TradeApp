@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
+@model Lists
 <div class="text-center">
     @if(ViewBag.username!="User"){
         <h1 class="display-4">Welcome @ViewBag.username</h1>
@@ -12,3 +12,19 @@
         <h4 class="display-4">Join Us</h4>
     }
 </div>
+<nav class="flex text-black" style="flex-direction: column;">
+    <div class="bg-secondary text-light" style="display:flex;flex-direction: row;flex-wrap: nowrap;justify-content: space-between;align-items: center;">
+        <div class="p-1">Product Name</div>
+        <div class="p-1">Price</div>
+        <div class="p-1">Image</div>
+        <div class="p-1">Owner Name</div>
+    </div>
+    @foreach(var i in Model.Products){
+        <div class="bg-light text-dark " style="border:1 black solid;display:flex;flex-direction: row;flex-wrap: nowrap;justify-content: space-around;align-items: center;">
+            <div class="p-1">@i.ProductName</div>
+            <div class="p-1">@i.ProductPrice</div>
+            <div class="p-1">@i.ProductImage</div>
+            <div class="p-1">@Model.Users.FirstOrDefault(p=>p.UserId==i.OwnerId).name</div>
+        </div>
+    }
+</nav>

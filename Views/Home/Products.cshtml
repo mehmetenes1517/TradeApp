@@ -1,0 +1,12 @@
+﻿@{
+    ViewData["Title"] = "Product Add";
+}
+@model Product
+<form asp-controller="Home" asp-action="Products" method="post">
+    <div class="flex p-12" style="flex-direction: column;justify-content: center;">
+        <div class="p-1"><label asp-for="ProductName">Name : </label><input class="form-control" type="text" asp-for="ProductName" required></div>
+        <div class="p-1"><label asp-for="ProductImage">Image : </label><input class="form-control" type="file" asp-for="ProductImage" required></div>
+        <div class="p-1"><label asp-for="ProductPrice">Price : </label><input class="form-control"  type="number" asp-for="ProductPrice" required></div>
+        <button class="btn btn-primary p-1" type="submit">Add Product</button>
+    </div>
+</form>

@@ -21,6 +21,7 @@
             }
             @if(User.Identity.IsAuthenticated){
                 <a asp-controller="Home" asp-action="Index" class="p-3 text-white" style="text-decoration: dashed;">@User.Identity.Name</a>
+                <a asp-controller="Home" asp-action="Products" class="p-3 text-white" style="text-decoration: dashed;">Products</a>
                 <a asp-controller="Home" asp-action="Logout" class="p-3 text-white" style="text-decoration: dashed;">Logout</a>
             }
             
