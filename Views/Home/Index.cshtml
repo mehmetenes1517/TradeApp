@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    @if(ViewBag.username!="User"){
+        <h1 class="display-4">Welcome @ViewBag.username</h1>
+    }
+    @if(ViewBag.Username=="User"){
+
+        <h1 class="display-4">Hello</h1>
+        <h4 class="display-4">Join Us</h4>
+    }
+</div>
